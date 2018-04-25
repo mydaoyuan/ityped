@@ -21,35 +21,23 @@ var setProps = function setProps(_ref) {
       strings = _ref$strings === undefined ? ['Put your strings here...', 'and Enjoy!'] : _ref$strings,
       _ref$typeSpeed = _ref.typeSpeed,
       typeSpeed = _ref$typeSpeed === undefined ? 100 : _ref$typeSpeed,
-      _ref$backSpeed = _ref.backSpeed,
-      backSpeed = _ref$backSpeed === undefined ? 50 : _ref$backSpeed,
-      _ref$backDelay = _ref.backDelay,
-      backDelay = _ref$backDelay === undefined ? 500 : _ref$backDelay,
+      _ref$waitDelay = _ref.waitDelay,
+      waitDelay = _ref$waitDelay === undefined ? 500 : _ref$waitDelay,
       _ref$startDelay = _ref.startDelay,
       startDelay = _ref$startDelay === undefined ? 500 : _ref$startDelay,
       _ref$cursorChar = _ref.cursorChar,
       cursorChar = _ref$cursorChar === undefined ? '|' : _ref$cursorChar,
-      _ref$placeholder = _ref.placeholder,
-      placeholder = _ref$placeholder === undefined ? false : _ref$placeholder,
       _ref$showCursor = _ref.showCursor,
       showCursor = _ref$showCursor === undefined ? true : _ref$showCursor,
-      _ref$disableBackTypin = _ref.disableBackTyping,
-      disableBackTyping = _ref$disableBackTypin === undefined ? false : _ref$disableBackTypin,
       _ref$onFinished = _ref.onFinished,
-      onFinished = _ref$onFinished === undefined ? function () {} : _ref$onFinished,
-      _ref$loop = _ref.loop,
-      loop = _ref$loop === undefined ? true : _ref$loop;
+      onFinished = _ref$onFinished === undefined ? function () {} : _ref$onFinished;
   return {
     strings: strings,
     typeSpeed: typeSpeed,
-    backSpeed: backSpeed,
     cursorChar: cursorChar,
-    backDelay: backDelay,
-    placeholder: placeholder,
+    waitDelay: waitDelay,
     startDelay: startDelay,
     showCursor: showCursor,
-    loop: loop,
-    disableBackTyping: disableBackTyping,
     onFinished: onFinished
   };
 };
@@ -71,48 +59,20 @@ var insertCursor = function insertCursor(element, cursor, props) {
   return props.showCursor ? element.insertAdjacentElement('afterend', cursor) : null;
 };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var typeString = function typeString(word, i, el, props) {
+  el.innerHTML += word[i];
   if (i === word.length - 1) {
+    if (isLastLetterOfLastString(word, props)) {
+      return props.onFinished();
+    }
     window.setTimeout(function () {
-      var k = 0;
-
-      var _loop = function _loop(l) {
-        k += 1;
-        if (props.disableBackTyping && isLastLetterOfLastString(word, props) && !props.loop) {
-          return {
-            v: props.onFinished()
-          };
-        }
-        setTimeout(function () {
-          return eraseString(l, el, props, word);
-        }, props.backSpeed * k);
-      };
-
-      for (var l = word.length - 1; l >= 0; l--) {
-        var _ret = _loop(l);
-
-        if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
-      }
-    }, props.backDelay);
+      return el.innerHTML += '<br/>';
+    }, props.waitDelay);
   }
-
-  props.placeholder ? el.placeholder += word[i] : el.innerHTML += word[i];
 };
 
 var isLastLetterOfLastString = function isLastLetterOfLastString(word, props) {
   return props.strings.indexOf(word) === props.strings.length - 1;
-};
-
-var eraseString = function eraseString(i, el, props, word) {
-  props.placeholder ? el.placeholder = el.placeholder.substring(0, --i) : el.innerHTML = el.innerHTML.substring(0, --i);
-
-  if (i === 0 && isLastLetterOfLastString(word, props) && props.loop) {
-    start(el, props);
-  } else if (isLastLetterOfLastString(word, props) && !props.loop) {
-    props.onFinished();
-  }
 };
 
 var writeString = function writeString(el, position, props, time) {
@@ -131,18 +91,18 @@ var start = function start(element, props) {
   var strings = props.strings,
       startDelay = props.startDelay,
       typeSpeed = props.typeSpeed,
-      backSpeed = props.backSpeed,
-      backDelay = props.backDelay,
-      loop = props.loop;
+      waitDelay = props.waitDelay;
 
   var arrLen = strings.length;
   for (var i = 0; i < arrLen; i++) {
     var len = strings[i].length;
-    var nextTime = len * typeSpeed + startDelay + len * backSpeed + backDelay;
+    var prevTime = times[i - 1] || 0;
+    var nextTime = prevTime + len * typeSpeed + startDelay + waitDelay;
     times.push(nextTime);
     var time = i === 0 ? startDelay : startDelay + times[i - 1];
     writeString(element, i, props, time);
   }
+  console.log(times);
 };
 
 var init = function init(el, config) {

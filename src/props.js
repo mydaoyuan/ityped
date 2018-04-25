@@ -7,25 +7,17 @@
 export const setProps = ({
   strings = ['Put your strings here...', 'and Enjoy!'],
   typeSpeed = 100,
-  backSpeed = 50,
-  backDelay = 500,
+  waitDelay = 500,
   startDelay = 500,
   cursorChar = '|',
-  placeholder = false,
   showCursor = true,
-  disableBackTyping = false,
-  onFinished =  function(){},
-  loop = true
+  onFinished = function() {}
 }) => ({
   strings,
   typeSpeed,
-  backSpeed,
   cursorChar,
-  backDelay,
-  placeholder,
+  waitDelay,
   startDelay,
   showCursor,
-  loop,
-  disableBackTyping,  
   onFinished
 })

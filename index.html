@@ -3,8 +3,13 @@
 <head>
   <title>Ityped V.2</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     .ityped-cursor {
-      font-size: 2.2rem;
+      font-size: 1rem;
+      line-height: 1;
       opacity: 1;
       -webkit-animation: blink 0.3s infinite;
       -moz-animation: blink 0.3s infinite;
@@ -29,25 +34,75 @@
         opacity: 0;
       }
     }
+
+    .header {
+      height: 32px;
+      background-color: #E3E3E3;
+      padding: 0 12px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .headingdotwarp {
+      line-height: 32px;
+
+    }
+
+    .profile__heading-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #eee;
+      margin-right: 8px;
+    }
+
+    .profile__heading-dot.red {
+      background-color: #FF5F57;
+    }
+
+    .profile__heading-dot.yellow {
+      background-color: #FFBD2E;
+    }
+
+    .profile__heading-dot.green {
+      background-color: #28CA42;
+    }
+
+    .body {
+      background-color: #505050;
+      width: 100%;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #fff;
+      overflow: auto;
+      height: 196px;
+      padding: 20px;
+      font-family: "Source Code Pro", Consolas, Menlo, Monaco, "Courier New", monospace;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <span id="ityped"></span>
-    <input type="text" id="ll">
-  </div>
-  <div id="appe">
-    <span id="itypedy"></span>
+    <div class="content">
+      <div class="header">
+        <div class="headingdotwarp">
+          <span class="profile__heading-dot red"></span>
+          <span class="profile__heading-dot yellow"></span>
+          <span class="profile__heading-dot green"></span>
+        </div>
+      </div>
+      <div class="body">
+        <span id="ityped"></span>
+      </div>
+    </div>
   </div>
   <script src="dist/index.js"></script>
   <script>
-    ityped.init("#ityped")
-
-    ityped.init("#ll", { 
-      showCursor: false, 
-      disableBackTyping: true, 
-      placeholder: true
+    ityped.init("#ityped", {
+      strings: ['2017.04.25', '天气晴', '今天晚上的成果✧(≖ ◡ ≖✿)嘿嘿'],
+      waitDelay: 1000
     })
   </script>
 </body>
