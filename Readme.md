@@ -1,6 +1,6 @@
 # iTyped
 
-[![npm package](https://img.shields.io/badge/npm-v1.0.1-lightgray.svg)](https://www.npmjs.com/package/ityped)
+![view](http://olkt8awja.bkt.clouddn.com/QQ20180425-224801.gif)
 
 > Dead simple Animated typing, with no dependencies.
 
