@@ -3,7 +3,7 @@
 > Dead simple Animated typing, with no dependencies.
 
 <p align="center">
-  <img src="./img/view"/>
+  <img src="http://olkt8awja.bkt.clouddn.com/view.gif"/>
 </p>
 
 Enter in any string, and watch it type at the speed you've set, backspace what it's typed,
