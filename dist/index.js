@@ -102,7 +102,6 @@ var start = function start(element, props) {
     var time = i === 0 ? startDelay : startDelay + times[i - 1];
     writeString(element, i, props, time);
   }
-  console.log(times);
 };
 
 var init = function init(el, config) {

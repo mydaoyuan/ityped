@@ -1,13 +1,10 @@
 {
-  "name": "ityped",
+  "name": "itypedT",
   "version": "1.0.1",
   "description": "Dead simple Animated typing, with no dependencies.",
   "main": "dist/index.min.js",
   "module": "src/index.js",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src"],
   "scripts": {
     "prebuild": "npm run clean",
     "pre:commit": "yarn build",
@@ -28,6 +25,6 @@
     "babel-cli": "^6.26.0",
     "rollup-watch": "^4.3.1"
   },
-  "author": "Luis Vinicius <luisviniciusbarreto@gmail.com>",
+  "author": "tangdaoyuan <tdy853839625@qq.com>",
   "license": "MIT"
 }

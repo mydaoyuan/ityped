@@ -1,4 +1,6 @@
-# iTyped
+# iTypedT
+
+fork by [iTyped](https://github.com/luisvinicius167/ityped)
 
 > Dead simple Animated typing, with no dependencies.
 
@@ -19,6 +21,53 @@ and begin a new sentence for however many strings you've set.
 * Placeholder input support.
 
 At now, if you just need to render Strings, **iTyped** is the best solution for you.
+
+### diff
+
+Customization
+
+```javascript
+  init("#element", {
+
+    /**
+     * @param {Array} strings An array with the strings that will be animated
+     */
+     strings: ['Put your strings here...', 'and Enjoy!']
+
+    /**
+     * @param {Number} typeSpeed Type speed in milliseconds
+     */
+     typeSpeed:  100,
+
+    /**
+     * @param {Number} startDelay Time before typing starts
+     */
+     startDelay: 500,
+
+    /**
+     * @param {Number} waitDelay Time before next line
+     */
+     waitDelay:  500,
+
+    /**
+     * @param {Bollean} showCursor Show the cursor element
+     */
+     showCursor: true,
+
+    /**
+     * @property {String} cursorChar character for cursor
+     */
+     cursorChar: "|",
+
+
+    // once the last string was typed
+    /**
+     * @property {Function} onFinished The callback called , if `loop` is false,
+     * once the last string was typed
+     */
+    onFinished: function(){},
+  }
+```
 
 ## Installation
 
@@ -100,51 +149,6 @@ export default class Hello extends Component {
     return <div id="myElement" />
   }
 }
-```
-
-### Customization
-
-```javascript
-  init("#element", {
-
-    /**
-     * @param {Array} strings An array with the strings that will be animated
-     */
-     strings: ['Put your strings here...', 'and Enjoy!']
-
-    /**
-     * @param {Number} typeSpeed Type speed in milliseconds
-     */
-     typeSpeed:  100,
-
-    /**
-     * @param {Number} startDelay Time before typing starts
-     */
-     startDelay: 500,
-
-    /**
-     * @param {Number} waitDelay Time before next line
-     */
-     waitDelay:  500,
-
-    /**
-     * @param {Bollean} showCursor Show the cursor element
-     */
-     showCursor: true,
-
-    /**
-     * @property {String} cursorChar character for cursor
-     */
-     cursorChar: "|",
-
-
-    // once the last string was typed
-    /**
-     * @property {Function} onFinished The callback called , if `loop` is false,
-     * once the last string was typed
-     */
-    onFinished: function(){},
-  }
 ```
 
 Thanks for checking this out.
