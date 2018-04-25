@@ -1,11 +1,9 @@
 # iTyped
 
-![view](http://olkt8awja.bkt.clouddn.com/QQ20180425-224801.gif)
-
 > Dead simple Animated typing, with no dependencies.
 
 <p align="center">
-  <img src="https://cdn.rawgit.com/luisvinicius167/ityped/master/img/itypedjs.gif" width="400"/>
+  <img src="http://olkt8awja.bkt.clouddn.com/QQ20180425-224801.gif" width="400"/>
 </p>
 
 Enter in any string, and watch it type at the speed you've set, backspace what it's typed,
